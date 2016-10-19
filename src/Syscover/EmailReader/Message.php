@@ -214,14 +214,12 @@ class Message
      */
     protected function loadMessage()
     {
-
         /* First load the message overview information */
 
         if(!is_object($messageOverview = $this->getOverview()))
-
             return false;
 
-        $this->subject = MIME::decode($messageOverview->subject, self::$charset);
+        $this->subject = isset($messageOverview->subject)? MIME::decode($messageOverview->subject, self::$charset) : null;
         $this->date    = strtotime($messageOverview->date);
         $this->size    = $messageOverview->size;
 
