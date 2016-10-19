@@ -425,23 +425,23 @@ class Server
      * @param null $order
      * @param string $typeOrder
      * @return array
-     * @throws Exception
+     * @throws \Exception
      */
     public function getMessages($limit = null, $offset = null, $order = null, $typeOrder = 'asc')
     {
         // check properties
         if(isset($limit) && ! is_numeric($limit))
-            throw new Exception('Limit property has to be a number');
+            throw new \Exception('Limit property has to be a number');
 
         if(isset($offset) && ! is_numeric($offset))
-            throw new Exception('Offset property has to be a number');
+            throw new \Exception('Offset property has to be a number');
 
         if($offset < 0)
-            throw new Exception('Offset property has to be 0 or greater');
+            throw new \Exception('Offset property has to be 0 or greater');
 
         // check limit has not 0
         if(isset($limit) && $limit == 0)
-            throw new Exception('Limit property has to be greater than 0');
+            throw new \Exception('Limit property has to be greater than 0');
 
 
         $negative = false;
@@ -468,7 +468,7 @@ class Server
             return [];
 
         if($offset >= $nMessages)
-            throw new Exception('Offset property has not to be greater or equal than total message, in this moment you have ' . $nMessages . ' total messages');
+            throw new \Exception('Offset property has not to be greater or equal than total message, in this moment you have ' . $nMessages . ' total messages');
 
         // check limit property, if it is positive
         if ($limit + $offset > $nMessages)
