@@ -23,6 +23,7 @@ final class MIME
 
         foreach (imap_mime_header_decode($text) as $word) {
             $ch = 'default' === $word->charset ? 'ascii' : $word->charset;
+            $ch = 'unicode-1-1-utf-7' === $ch ? 'utf7' : $ch;
 
             if (strtoupper($ch) != strtoupper($targetCharset))
             {
